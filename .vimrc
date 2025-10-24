@@ -7,7 +7,7 @@ set encoding=UTF-8
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
-    \ set shiftwidth=4 |
+    \ set shiftwidth=4 
 
 set tabstop=2
 set softtabstop=2
@@ -26,28 +26,42 @@ set number
 set relativenumber
 set cursorline
 set cursorcolumn
-hi cursorlineNr cterm=bold ctermfg=Yellow ctermbg=NONE
-hi cursorLine cterm=bold ctermbg=242
-hi cursorColumn ctermbg=242
+hi CursorlineNr cterm=bold ctermfg=Yellow ctermbg=NONE
+hi CursorLine cterm=bold ctermbg=242
+hi CursorColumn ctermbg=242
 set textwidth=79
-set signcolumn
+set signcolumn=yes
 
-set showcmd
-set scrolloff=10
-set conceallevel=1
+ set showcmd
+ set scrolloff=10
+ set conceallevel=1
 
-set noerrorbells visualbell t_vb=
-set clipboard=unnamed
+ set noerrorbells visualbell t_vb=
+ set clipboard=unnamed
 
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-nnoremap <CR> :noh<CR><CR>:<backspace>
+"nnoremap <CR> :noh<CR><CR>:<backspace>
+nnoremap <CR> :noh<CR>
 
-so ~/.vim/plugins.vim
-so ~/.vim/plugin-config.vim
-so ~/.vim/autoclose.vim
+" so ~/.vim/plugins.vim
+" so ~/.vim/plugin-config.vim
+" so ~/.vim/autoclose.vim
+if filereadable(expand("~/.vim/plugins.vim"))
+  silent! source ~/.vim/plugins.vim
+endif
+if filereadable(expand("~/.vim/plugin-config.vim"))
+  silent! source ~/.vim/plugin-config.vim
+endif
+if filereadable(expand("~/.vim/autoclose.vim"))
+  silent! source ~/.vim/autoclose.vim
+endif
+
+let g:plug_shallow = 1
+set shortmess+=I " skip the intro message
+set shortmess+=a " avoid "ATTENTION" messages
 
 "-- some color setting
 set wildmenu

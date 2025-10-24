@@ -1,65 +1,60 @@
+" Only apply in coding filetypes (adjust as needed)
+augroup AutoClosePairs
+  autocmd!
+  autocmd FileType python,c,cpp,java,javascript,typescript,lua,sh call s:SetupAutoClose()
+augroup END
 
-"-- AUTOCLOSE NATIVE CONFIG
-      "autoclose and position cursor to write text inside
-inoremap ' ''<left>
-inoremap ` ``<left>
-inoremap " ""<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-      "autoclose with ; and position cursor to write text inside
-inoremap '; '';<left><left>
-inoremap `; ``;<left><left>
-inoremap "; "";<left><left>
-inoremap (; ();<left><left>
-inoremap [; [];<left><left>
-inoremap {; {};<left><left>
-      "autoclose with , and position cursor to write text inside
-inoremap ', '',<left><left>
-inoremap `, ``,<left><left>
-inoremap ", "",<left><left>
-inoremap (, (),<left><left>
-inoremap [, [],<left><left>
-inoremap {, {},<left><left>
-      "autoclose and position cursor after
-inoremap '<tab> ''
-inoremap `<tab> ``
-inoremap "<tab> ""
-inoremap (<tab> ()
-inoremap [<tab> []
-inoremap {<tab> {}
-      "autoclose with ; and position cursor after
-inoremap ';<tab> '';
-inoremap `;<tab> ``;
-inoremap ";<tab> "";
-inoremap (;<tab> ();
-inoremap [;<tab> [];
-inoremap {;<tab> {};
-      "autoclose with , and position cursor after
-inoremap ',<tab> '',
-inoremap `,<tab> ``,
-inoremap ",<tab> "",
-inoremap (,<tab> (),
-inoremap [,<tab> [],
-inoremap {,<tab> {},
-      "autoclose 2 lines below and position cursor in the middle
-inoremap '<CR> '<CR>'<ESC>O
-inoremap `<CR> `<CR>`<ESC>O
-inoremap "<CR> "<CR>"<ESC>O
-inoremap (<CR> (<CR>)<ESC>O
-inoremap [<CR> [<CR>]<ESC>O
-inoremap {<CR> {<CR>}<ESC>O
-      "autoclose 2 lines below adding ; and position cursor in the middle
-inoremap ';<CR> '<CR>';<ESC>O
-inoremap `;<CR> `<CR>`;<ESC>O
-inoremap ";<CR> "<CR>";<ESC>O
-inoremap (;<CR> (<CR>);<ESC>O
-inoremap [;<CR> [<CR>];<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-      "autoclose 2 lines below adding , and position cursor in the middle
-inoremap ',<CR> '<CR>',<ESC>O
-inoremap `,<CR> `<CR>`,<ESC>O
-inoremap ",<CR> "<CR>",<ESC>O
-inoremap (,<CR> (<CR>),<ESC>O
-inoremap [,<CR> [<CR>],<ESC>O
-inoremap {,<CR> {<CR>},<ESC>O
+function! s:SetupAutoClose() abort
+  " --- Basic pair completion ---
+  inoremap <buffer> ' ''<Left>
+  inoremap <buffer> " ""<Left>
+  inoremap <buffer> ` ``<Left>
+  inoremap <buffer> ( ()<Left>
+  inoremap <buffer> [ []<Left>
+  inoremap <buffer> { {}<Left>
+
+  " --- Autoclose with ; or , inside pairs ---
+  inoremap <buffer> '; '';<Left><Left>
+  inoremap <buffer> ', '',<Left><Left>
+  inoremap <buffer> `; ``;<Left><Left>
+  inoremap <buffer> `, ``,<Left><Left>
+  inoremap <buffer> "; "";<Left><Left>
+  inoremap <buffer> ", "",<Left><Left>
+  inoremap <buffer> (; ();<Left><Left>
+  inoremap <buffer> (, (),<Left><Left>
+  inoremap <buffer> [; [];<Left><Left>
+  inoremap <buffer> [, [],<Left><Left>
+  inoremap <buffer> {; {};<Left><Left>
+  inoremap <buffer> {, {},<Left><Left>
+
+  " --- Autoclose with Tab after pair ---
+  inoremap <buffer> '<Tab> ''
+  inoremap <buffer> `<Tab> ``
+  inoremap <buffer> "<Tab> ""
+  inoremap <buffer> (<Tab> ()
+  inoremap <buffer> [<Tab> []
+  inoremap <buffer> {<Tab> {}
+
+  " --- Autoclose + newline safely (stay in insert mode) ---
+  " Use <C-o> to run a single normal command without leaving insert mode
+  inoremap <buffer> '<CR> '<CR>'<C-o>k
+  inoremap <buffer> `<CR> `<CR>`<C-o>k
+  inoremap <buffer> "<CR> "<CR>"<C-o>k
+  inoremap <buffer> (<CR> (<CR>)<C-o>k
+  inoremap <buffer> [<CR> [<CR>]<C-o>k
+  inoremap <buffer> {<CR> {<CR>}<C-o>k
+
+  " --- Autoclose + newline with ; or , ---
+  inoremap <buffer> ';<CR> '<CR>';<C-o>k
+  inoremap <buffer> ',<CR> '<CR>',<C-o>k
+  inoremap <buffer> `;<CR> `<CR>`;<C-o>k
+  inoremap <buffer> `,<CR> `<CR>`,<C-o>k
+  inoremap <buffer> ";<CR> "<CR>";<C-o>k
+  inoremap <buffer> ",<CR> "<CR>",<C-o>k
+  inoremap <buffer> (;<CR> (<CR>);<C-o>k
+  inoremap <buffer> (,<CR> (<CR>),<C-o>k
+  inoremap <buffer> [;<CR> [<CR>];<C-o>k
+  inoremap <buffer> [,<CR> [<CR>],<C-o>k
+  inoremap <buffer> {;<CR> {<CR>};<C-o>k
+  inoremap <buffer> {,<CR> {<CR>},<C-o>k
+endfunction
