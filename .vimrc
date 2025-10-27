@@ -59,9 +59,9 @@ if filereadable(expand("~/.vim/autoclose.vim"))
   silent! source ~/.vim/autoclose.vim
 endif
 
-let g:plug_shallow = 1
-set shortmess+=I " skip the intro message
-set shortmess+=a " avoid "ATTENTION" messages
+" let g:plug_shallow = 1
+" set shortmess+=I " skip the intro message
+" set shortmess+=a " avoid "ATTENTION" messages
 
 "-- some color setting
 set wildmenu
@@ -69,7 +69,7 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set termguicolors
 let g:gruvbox_italic=1
-colorscheme gruvbox
+silent! colorscheme gruvbox
 set background=dark
 " hi Normal guibg=None ctermbg=NONE
 let g:terminal_ansi_colors = [
