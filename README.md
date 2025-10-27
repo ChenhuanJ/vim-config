@@ -1,4 +1,4 @@
-# 🧠 Chenhuan’s Vim Config
+# 🧠 My Vim Config
 
 A lightweight, organized Vim configuration for smooth editing with automatic indentation, plugin management, and a clean color scheme.  
 Designed for quick setup on any new machine or VM.
@@ -6,11 +6,11 @@ Designed for quick setup on any new machine or VM.
 ---
 
 ## 📁 Repository Structure
-vim-config/
-├── .vimrc
-├── autoclose.vim
-├── plugin-config.vim
-└── plugins.vim
+vim-config/<br>
+├── .vimrc<br>
+├── autoclose.vim<br>
+├── plugin-config.vim<br>
+└── plugins.vim<br>
 
 ---
 
@@ -22,9 +22,10 @@ vim-config/
 
 ---
 
-## 🚀 Quick Install (Recommended)
+## 🚀 Quick Install
 
-If you just want to set it up instantly on a fresh system, run this **one-line command**:
+If you want to set it up instantly on a fresh system, run the one-line command below.  
+*(Requires **bash** — most systems can run it with `bash` even if another shell is active.)*
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/ChenhuanJ/vim-config/main/setup.sh)
@@ -40,16 +41,25 @@ This script will:
 
 Or install manually:
 1. Clone this repository
+```bash
 git clone https://github.com/ChenhuanJ/vim-config.git ~/vim-config
+```
 
 2. Copy configuration files
+```bash
 cp ~/vim-config/.vimrc ~/.vimrc
 mkdir -p ~/.vim
 cp ~/vim-config/*.vim ~/.vim/
+```
 
-3. Install vim-plug
+3. Install vim-plug if necessary
+```bash
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 
 4. Install plugins from within Vim
+```bash
 vim +PlugInstall +qall
+```
+
